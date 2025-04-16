@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Details</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #222;
+      padding: 40px;
+      line-height: 1.7;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      color: #1a1a1a;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .left {
+      flex: 1 1 65%;
+      min-width: 300px;
+    }
+
+    .right {
+      flex: 1 1 30%;
+      min-width: 260px;
+      border: 1px solid #ccc;
+      background-color: #f7f9fc;
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .left p {
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    .highlight {
+      color: #2a56c6;
+      font-weight: 600;
+    }
+
+    .right h3 {
+      text-align: center;
+      background-color: #dce5f5;
+      margin-bottom: 12px;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 6px;
+      color: #0f3a70;
+    }
+
+    .right table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .right table td {
+      padding: 6px 8px;
+      vertical-align: top;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .right table tr:nth-child(even) {
+      background-color: #eef2f7;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .left, .right {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="events.html">
+      <img src="assets/images/home-icon.png" alt="Home" class="home-icon" style="width: 32px; height: 32px;" />
+    </a>
+  </header>
+
+  <main>
+    <h1 id="event-title">Event Title</h1>
+    <div class="container">
+      <div class="left">
+        <img id="event-image" src="" alt="Event Image" style="width: 100%; max-height: 300px; object-fit: cover; margin-bottom: 20px; border-radius: 10px;" />
+        <p class="event-date"><strong>Date:</strong> <span id="event-date"></span></p>
+        <p id="event-description"></p>
+      </div>
+      <div class="right" id="event-infobox" style="display: none;">
+        <h3>Event Info</h3>
+        <table id="event-table"></table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventKey = urlParams.get('event');
+
+    const eventData = {
+      dwarka: {
+        title: "Dwarkadhish Temple",
+        image: "assets/images/Dwaraka.jpg",
+        date: "15th–16th century (Founded: 200 BCE)",
+        description: `Dwarkadhish Temple is one of the Char Dham pilgrimage sites in India. Located in the city of Dwarka, it is dedicated to Lord Krishna and holds immense religious and historical significance.`,
+        infobox: [
+          ["Location", "Dwarka, Gujarat"],
+          ["Deity", "Lord Krishna"],
+          ["Architecture", "Chalukya style"],
+          ["Constructed", "15th–16th century"],
+          ["Historical Importance", "One of the Char Dham pilgrimage sites"]
+        ]
+      },
+      khalji: {
+        title: "Alauddin Khalji's Conquest of Gujarat",
+        image: "assets/images/alaudin khilgi1.jpg",
+        date: "13th century",
+        description: `Alauddin Khalji invaded Gujarat in 1299, defeating the Vaghela dynasty. This marked the beginning of Muslim rule in Gujarat.`,
+        infobox: [
+          ["Date", "June 1299–1304"],
+          ["Location", "Gujarat"],
+          ["Status", "Delhi Sultanate Victory<br>• Annexation of Gujarat<br>• Fall of Vaghelas"],
+          ["Belligerents", "Delhi vs. Vaghela dynasty"],
+          ["Commanders", "Alauddin Khalji, Ulugh Khan, Nusrat Khan vs. Karna II"],
+          ["Strength", "20,000 Infantry, 14,000 Cavalry vs. Unknown"],
+          ["Casualties", "Light (Delhi), Heavy (Vaghelas)"]
+        ]
+      },
+      terls: {
+        title: "Thumba Equatorial Rocket Launching Station (TERLS)",
+        image: "assets/images/Isro.jpeg",
+        date: "1963",
+        description: `TERLS was the site of India’s first rocket launch. Though based in Kerala, its influence and collaborations impacted the Gujarat region in early ISRO missions.`,
+        infobox: [
+          ["Established", "1963"],
+          ["Location", "Thumba, Kerala"],
+          ["Significance", "First Indian rocket launch"],
+          ["Impact on Gujarat", "Collaborations with regional institutions"]
+        ]
+      },
+      rann: {
+        title: "Rann Utsav, Kutch",
+        image: "assets/images/White Rann (10).jpg",
+        date: "Annual Festival",
+        description: `Rann Utsav is a cultural celebration in the white desert of Kutch, showcasing Gujarat's heritage, music, and crafts.`,
+        infobox: [
+          ["Location", "Kutch, Gujarat"],
+          ["Duration", "3-4 months (Nov–Feb)"],
+          ["Activities", "Folk dance, Music, Handicrafts, Camel rides"],
+          ["Tourism Impact", "High – attracts both domestic and international tourists"]
+        ]
+      },
+      navratri: {
+        title: "Vibrant Navratri Festival",
+        image: "assets/images/Navratri_23.jpg",
+        date: "Every year during Navratri (Sept–Oct)",
+        description: `Navratri is a vibrant 9-night festival filled with Garba, Dandiya Raas, and devotion to the Goddess Durga.`,
+        infobox: [
+          ["Duration", "9 nights"],
+          ["Deity", "Goddess Durga"],
+          ["Main Attractions", "Garba, Dandiya Raas, Traditional Outfits"],
+          ["Regions Celebrated", "All over Gujarat"]
+        ]
+      },
+      somnath: {
+        title: "Somnath Festival",
+        image: "assets/images/somnath_1_festival.jpg",
+        date: "February 24–26, 2025",
+        description: `Held during Mahashivratri, this festival celebrates the spiritual legacy of the Somnath Jyotirlinga temple.`,
+        infobox: [
+          ["Location", "Somnath, Gujarat"],
+          ["Occasion", "Mahashivratri"],
+          ["Duration", "3 days"],
+          ["Activities", "Devotional songs, Aarti, Temple rituals"]
+        ]
+      }
+    };
+
+    const container = document.getElementById("event-details");
+    const title = document.getElementById("event-title");
+    const image = document.getElementById("event-image");
+    const date = document.getElementById("event-date");
+    const desc = document.getElementById("event-description");
+    const infobox = document.getElementById("event-infobox");
+    const table = document.getElementById("event-table");
+
+    const event = eventData[eventKey];
+    if (event) {
+      title.textContent = event.title;
+      image.src = event.image;
+      image.alt = event.title;
+      date.textContent = event.date;
+      desc.textContent = event.description;
+
+      if (event.infobox) {
+        infobox.style.display = "block";
+        table.innerHTML = event.infobox.map(row => `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td></tr>`).join("");
+      }
+    } else {
+      
+      title.textContent = "Alauddin Khalji's Conquest of Gujarat";
+      desc.textContent = "Alauddin Khalji invaded Gujarat in 1299, defeating the Vaghela dynasty. This marked the beginning of Muslim rule in Gujarat.";
+    }
+  </script>
+</body>
+</html>

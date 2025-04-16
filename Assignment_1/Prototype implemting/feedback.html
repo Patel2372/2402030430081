@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visitor Feedback & Contact</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #000;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .feedback-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .feedback-card {
+      background-color: #ffeaea;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .feedback-card h4 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .feedback-card span {
+      margin-left: auto;
+      color: gold;
+    }
+
+    .feedback-card p {
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .contact-form {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .contact-form form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .input-group input {
+      width: 220px;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: black;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-top: 1px solid #eee;
+      color: #333;
+    }
+
+    footer a {
+      margin: 0 10px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Visitor Feedback</h2>
+  <p class="subtitle">See what others are saying about their historical exploration</p>
+
+  <div class="feedback-container">
+    <div class="feedback-card">
+      <h4>Rudraksh Ptl<span>★★★★★</span></h4>
+      <p>Amazing experience exploring historical sites</p>
+    </div>
+    <div class="feedback-card">
+      <h4>Yash Patel<span>★★★★★</span></h4>
+      <p>Informative and engaging historical journey</p>
+    </div>
+    <div class="feedback-card">
+      <h4>Pranav Thakker<span>★★★★★</span></h4>
+      <p>Recommend to anyone interested in history</p>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <h2>Contact Us</h2>
+    <p>Get in touch with us for any inquiries.</p>
+    <form onsubmit="redirectToHome(event)">
+      <div class="input-group">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <footer>
+    <a href="#">Contact Us</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms & Conditions</a>
+  </footer>
+
+  <script>
+    function redirectToHome(event) {
+      event.preventDefault(); // Prevent actual form submission
+      window.location.href = "home.html"; // Redirect to homepage
+    }
+  </script>
+
+</body>
+</html>

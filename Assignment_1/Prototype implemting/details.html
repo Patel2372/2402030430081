@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Location Details</title>
+  <link rel="stylesheet" href="assets/css/location.css" />
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #fff;
+      margin: 0;
+      color: #111;
+    }
+    .home-icon {
+  width: 32px;
+  height: 32px;
+  margin: 10px;
+  cursor: pointer;
+}
+    header {
+      padding: 20px;
+     
+    }
+
+    .home-link {
+      font-size: 1.5rem;
+      color: white;
+      text-decoration: none;
+    }
+
+    .details-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .details-title {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .details-section {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+
+    .details-section img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 5px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .details-text {
+      flex: 1;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    p {
+      text-align: justify;
+      margin-top: 10px;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 1rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="home.html">
+      <img src="assets/images/home-icon.png" alt="Home" class="home-icon" />
+    </a>
+  </header>
+  <main>
+    <div class="details-container" id="detailsContainer"></div>
+  </main>
+
+  <script>
+    const locationsData = {
+      "dwarka": {
+        title: "Dwarkadhish Temple",
+        subtitle: "DEVBHOOMI DWARKA",
+        image: "assets/images/Dwaraka.jpg",
+        about: `The Dwarkadhish Temple (Jagat Mandir) is believed to have been established more than 2500 years ago by Lord Krishna's great grandson, Vajranabh. The ancient temple has been renovated several times, especially leaving imprints of 16th and 19th centuries.
+
+The walls have intricately carved mythical characters and legends. The impressive 43m high spire is topped with a flag made from 52 yards of cloth that flutters in the soft breeze from the Arabian Sea behind the temple. There are two doors (Swarg and Moksh) for the entry and exit of the temple. A bridge called Sudama Setu (7am–1pm, 4–7.30pm) at the base of the temple takes one across the Gomti creek towards the beach.`,
+        history: `Dwarka on the western tip of the Kathiawar Peninsula is clubbed with the holiest sites in India – the Char Dhams that include Badrinath, Puri and Rameshwaram. It is believed that Lord Krishna arrived here from Braj in Uttar Pradesh to build the city. The temple was established by his grandson.
+
+It is at the cusp of the Gomti River and the Arabian Sea, providing a scenic backdrop to the spiritual site. It is said that Dwarka was submerged under the sea six times and what we see now is its seventh avatar. The original structure was destroyed by Mahmud Begada in 1472, and subsequently rebuilt in the 15th–16th century. It was also feted by Adi Shankaracharya, the 8th century Hindu theologian and philosopher.`,
+        visit: "The best time to visit is between November and February, and during Janmashtami which is celebrated grandly here."
+      },
+      "laxmi": {
+        title: "Laxmi Vilas Palace",
+        subtitle: "VADODARA",
+        image: "assets/images/lxmi vilas.jpg",
+        about: `The Laxmi Vilas Palace was built by Maharaja Sayajirao Gaekwad III in 1890. It is four times the size of Buckingham Palace and still serves as the residence of the royal family of Baroda. The palace is known for its Indo-Saracenic Revival architecture.
+
+The building is set in a vast compound of over 500 acres, which also houses a golf course, museum, and school. The interiors are lavish with ornate chandeliers, mosaic floors, and a Darbar Hall featuring Venetian mosaic floors and Belgian stained glass windows.`,
+        history: `Commissioned in the late 19th century, the palace was one of the most modern structures of its time. It had elevators, a rare facility in Indian palaces. Maharaja Sayajirao Gaekwad III was a progressive ruler who envisioned a modern kingdom.
+
+The palace has seen the convergence of Indian royalty with European luxury. Today, the Gaekwads still live in a part of the palace while other areas are open for public viewing.`,
+        visit: "The best time to visit is during winter months (October to March). Guided tours are available to explore the palace and museum."
+      },
+      "unity": {
+        title: "Statue of Unity",
+        subtitle: "KEVADIA",
+        image: "assets/images/sardar.jpg",
+        about: `The Statue of Unity is a colossal statue of Indian statesman and independence activist Sardar Vallabhbhai Patel. It stands at a height of 182 meters and is currently the tallest statue in the world.
+
+It was inaugurated on 31st October 2018 by Prime Minister Narendra Modi. The statue faces the Sardar Sarovar Dam and is a part of the integrated tourism circuit developed around the Narmada river.`,
+        history: `Sardar Patel, known as the "Iron Man of India", was instrumental in the integration of over 560 princely states into the Indian Union after independence. The statue was constructed to honor his legacy and unify the nation symbolically.
+
+It was designed by Indian sculptor Ram V. Sutar and constructed by Larsen & Toubro within 46 months.`,
+        visit: "The best time to visit is from October to February. Visitors can enjoy a museum, sound and light show, and a panoramic view from the viewing gallery at 153 meters."
+      }
+    };
+
+    function renderDetails(placeKey) {
+      const data = locationsData[placeKey];
+      if (!data) {
+        document.getElementById("detailsContainer").innerHTML = "<p>Location details not found.</p>";
+        return;
+      }
+
+      document.getElementById("detailsContainer").innerHTML = `
+        <div class="details-title">${data.title}</div>
+        <div class="subtitle">${data.subtitle}</div>
+        <div class="details-section">
+          <img src="${data.image}" alt="${data.title}" />
+          <div class="details-text">
+            <h3>About The Place:</h3>
+            <p>${data.about.replace(/\n/g, "<br><br>")}</p>
+            <h3>Brief History:</h3>
+            <p>${data.history.replace(/\n/g, "<br><br>")}</p>
+            <h3>Best time to visit:</h3>
+            <p>${data.visit}</p>
+          </div>
+        </div>
+        <a href="locations.html" class="back-link">&larr; Back to Locations</a>
+      `;
+    }
+
+    const query = new URLSearchParams(window.location.search);
+    const placeKey = query.get("place") || "dwarka";
+    renderDetails(placeKey);
+  </script>
+</body>
+</html>

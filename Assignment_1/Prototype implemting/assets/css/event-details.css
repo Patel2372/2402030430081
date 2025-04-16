@@ -1,0 +1,95 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #222;
+  padding: 40px;
+  line-height: 1.7;
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  color: #1a1a1a;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.left {
+  flex: 1 1 65%;
+  min-width: 300px;
+}
+
+.right {
+  flex: 1 1 30%;
+  min-width: 260px;
+  border: 1px solid #ccc;
+  background-color: #f7f9fc;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Description content */
+.left p {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.highlight {
+  color: #2a56c6;
+  font-weight: 600;
+}
+
+/* Infobox styles */
+.right h3 {
+  text-align: center;
+  background-color: #dce5f5;
+  margin-bottom: 12px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: #0f3a70;
+}
+
+.right table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.right table td {
+  padding: 6px 8px;
+  vertical-align: top;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.right table tr:nth-child(even) {
+  background-color: #eef2f7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left, .right {
+    width: 100%;
+  }
+}
